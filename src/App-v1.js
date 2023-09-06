@@ -112,7 +112,7 @@ export default function App() {
 
       fetchMovies();
     },
-    [query]
+    [tempQuery]
   );
 
   return (
@@ -290,6 +290,14 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       getMovieDetails();
     },
     [selectedId]
+  );
+
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `Movie | ${title}`;
+    },
+    [title]
   );
 
   return (
